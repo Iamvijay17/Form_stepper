@@ -77,11 +77,13 @@ class PersonalDetails extends Component {
 
             <div className='form-group__element'>
               <label htmlFor='phone' className='form-group__label'>
-              Phone
+              Phone Number
               </label>
-              <input type='number' value={phone} name='phone' onChange={handleChange('phone')} onBlur={validatePhone} className='form-group__input' />
+              <input type='text' value={phone} name='phone' onChange={handleChange('phone')} onBlur={validatePhone} className='form-group__input'  maxlength="10" />
               <p className='error'>{isErrorPhone && errorMessagePhone}</p>
             </div>
+
+
           </div>
             
           <div style={{textAlign: 'center'}}>

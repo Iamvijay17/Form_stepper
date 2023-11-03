@@ -112,10 +112,10 @@ class Form extends Component {
       }
     }
 
-    else if (input === 'phone') {
+    if (input === 'phone') {
       if (this.state.phone.length >= 10) {
         this.setState({
-          isErrorLastName: false
+          isErrorPhone: false
         })
       }
     }
@@ -188,7 +188,7 @@ class Form extends Component {
       isErrorPhone,
       errorMessageFirstName,
       errorMessageLastName,
-      errorMessagePhone,
+      errorMessagePhone
 
     } = this.state;
 
