@@ -71,8 +71,10 @@ class Form extends Component {
     level: '',
     isErrorFirstName: true,
     isErrorLastName: true,
+    isErrorPhone: true,
     errorMessageFirstName: '',
-    errorMessageLastName: ''
+    errorMessageLastName: '',
+    errorMessagePhone: ''
   };
 
   nextStep = () => {
@@ -109,6 +111,14 @@ class Form extends Component {
         })
       }
     }
+
+    else if (input === 'phone') {
+      if (this.state.phone.length >= 10) {
+        this.setState({
+          isErrorLastName: false
+        })
+      }
+    }
   }
 
   addLevel = e => {
@@ -126,10 +136,10 @@ class Form extends Component {
   };
 
   validateFirstName = () => {
-    if (this.state.firstname.length < 2) {
+    if (this.state.firstname.length < 5) {
       this.setState({
         isErrorFirstName: true,
-        errorMessageFirstName: 'Type your first name (at least 2 characters)'
+        errorMessageFirstName: 'Type your first name (at least 5 characters)'
       });
       return false;
     }
@@ -137,10 +147,22 @@ class Form extends Component {
   }
 
   validateLastName = () => {
-    if (this.state.lastname.length < 2) {
+    if (this.state.lastname.length < 5) {
       this.setState({
         isErrorLastName: true,
-        errorMessageLastName: 'Type your last name (at least 2 characters)'
+        errorMessageLastName: 'Type your last name (at least 5 characters)'
+      });
+      return false;
+    }
+    return true;
+  } 
+
+
+  validatePhone = () => {
+    if (this.state.phone.length < 10) {
+      this.setState({
+        isErrorPhone: true,
+        errorMessagePhone: 'Type your Phone Number (at least 10 Digit)'
       });
       return false;
     }
@@ -163,8 +185,11 @@ class Form extends Component {
       level,
       isErrorFirstName,
       isErrorLastName,
+      isErrorPhone,
       errorMessageFirstName,
-      errorMessageLastName
+      errorMessageLastName,
+      errorMessagePhone,
+
     } = this.state;
 
     const coursesOptions = coursesData.map(el => ({
@@ -200,10 +225,13 @@ class Form extends Component {
             phone={phone}
             validateFirstName={this.validateFirstName}
             validateLastName={this.validateLastName}
+            validatePhone={this.validatePhone}
             isErrorFirstName={isErrorFirstName}
             isErrorLastName={isErrorLastName}
+            isErrorPhone={isErrorPhone}
             errorMessageFirstName={errorMessageFirstName}
             errorMessageLastName={errorMessageLastName}
+            errorMessagePhone={errorMessagePhone}
           />
         )
       case 2:

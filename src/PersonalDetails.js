@@ -7,7 +7,8 @@ class PersonalDetails extends Component {
     e.preventDefault(); 
     const isFirstNameValid = this.props.validateFirstName();
     const isLastNameValid = this.props.validateLastName();
-    if (isFirstNameValid && isLastNameValid) {
+    const isPhoneValid = this.props.validatePhone();
+    if (isFirstNameValid && isLastNameValid && isPhoneValid) {
       this.props.nextStep();
     }
   }
@@ -21,10 +22,13 @@ class PersonalDetails extends Component {
       handleChange, 
       validateFirstName,
       validateLastName,
+      validatePhone,
       isErrorFirstName,
       isErrorLastName,
+      isErrorPhone,
       errorMessageFirstName,
-      errorMessageLastName
+      errorMessageLastName,
+      errorMessagePhone,
     } = this.props;
 
     return (
@@ -75,7 +79,8 @@ class PersonalDetails extends Component {
               <label htmlFor='phone' className='form-group__label'>
               Phone
               </label>
-              <input type='text' value={phone} name='phone' onChange={handleChange('phone')} className='form-group__input' />
+              <input type='number' value={phone} name='phone' onChange={handleChange('phone')} onBlur={validatePhone} className='form-group__input' />
+              <p className='error'>{isErrorPhone && errorMessagePhone}</p>
             </div>
           </div>
             
