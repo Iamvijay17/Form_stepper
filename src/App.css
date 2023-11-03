@@ -34,7 +34,7 @@
   padding: 10px;
   margin: 10px;
   border-radius: 3px;
-  border: 1px solid #003487;
+  border: 1px solid #FE6F5E;
 }
 
 .buttons {
@@ -46,7 +46,7 @@
   width: 180px;
   padding: 10px;
   border-radius: 3px;
-  border: 1px solid #003487;
+  border: 1px solid #FE6F5E;
   margin: 5px 12px;
 }
 
@@ -56,13 +56,13 @@
 }
 
 .buttons__button--next {
-  background-color: #003487;
+  background-color: #FE6F5E;
   color: #fff
 }
 
 .buttons__button--back {
   background-color: #fff;
-  color: #003487
+  color: #FE6F5E
 }
 
 .select {
@@ -73,7 +73,7 @@
   width: 500px;
   padding: 10px;
   border-radius: 3px;
-  border: 1px solid #003487;
+  border: 1px solid #FE6F5E;
 }
 
 .select__item:hover {
@@ -88,7 +88,7 @@
 .summary {
   width: 80%;
   margin: 20px auto;
-  border: 1px solid #2b7cff;
+  border: 1px solid #FE6F5E;
   padding: 10px;
   border-radius: 3px;
 }
@@ -107,12 +107,12 @@
 }
 
 .stepper__step {
-  border: 1px solid #2b7cff !important;
+  border: 1px solid #FE6F5E !important;
   cursor: default !important;
 }
 
 .stepper__step + div > span {
-  color: #0f6bff !important;
+  color: #FE6F5E !important;
 }
 
 .RFS-ConnectorContainer {

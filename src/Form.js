@@ -1,178 +1,197 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import PersonalDetails from './PersonalDetails';
-import CourseDetails from './CourseDetails';
-import Summary from './Summary';
+import PersonalDetails from "./PersonalDetails";
+import CourseDetails from "./CourseDetails";
+import Summary from "./Summary";
 
 //Sample data
 const coursesData = [
   {
     id: 1,
-    courseName: 'HTML',
-    category: 'Front-end'
+    courseName: "HTML",
+    category: "Front-end",
   },
   {
     id: 2,
-    courseName: 'CSS',
-    category: 'Front-end'
+    courseName: "CSS",
+    category: "Front-end",
   },
   {
     id: 3,
-    courseName: 'JavaScript',
-    category: 'Front-end'
+    courseName: "JavaScript",
+    category: "Front-end",
   },
   {
     id: 4,
-    courseName: 'React',
-    category: 'Front-end'
+    courseName: "React",
+    category: "Front-end",
   },
   {
     id: 5,
-    courseName: 'Angular',
-    category: 'Front-end'
+    courseName: "Angular",
+    category: "Front-end",
   },
   {
     id: 6,
-    courseName: 'Vue',
-    category: 'Front-end'
+    courseName: "Vue",
+    category: "Front-end",
   },
   {
     id: 7,
-    courseName: 'Java',
-    category: 'Back-end'
+    courseName: "Java",
+    category: "Back-end",
   },
   {
     id: 8,
-    courseName: 'Python',
-    category: 'Back-end'
+    courseName: "Python",
+    category: "Back-end",
   },
   {
     id: 9,
-    courseName: 'PHP',
-    category: 'Back-end'
+    courseName: "PHP",
+    category: "Back-end",
   },
   {
     id: 10,
-    courseName: 'Express',
-    category: 'Back-end'
-  }       
+    courseName: "Express",
+    category: "Back-end",
+  },
 ];
 
-const levelsData = ['Beginner', 'Intermediate', 'Advanced'];
+const levelsData = ["Beginner", "Intermediate", "Advanced"];
 
 class Form extends Component {
   state = {
     step: 1,
-    firstname: '',
-    lastname: '',
-    email: '',
-    phone: '',
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
     courses: [],
-    level: '',
+    level: "",
     isErrorFirstName: true,
     isErrorLastName: true,
+    isErrorEmail: true,
     isErrorPhone: true,
-    errorMessageFirstName: '',
-    errorMessageLastName: '',
-    errorMessagePhone: ''
+    errorMessageFirstName: "",
+    errorMessageLastName: "",
+    errorMessageEmail: "",
+    errorMessagePhone: "",
   };
 
   nextStep = () => {
     const { step } = this.state;
     this.setState({
-      step: step + 1
-    })
-  }
+      step: step + 1,
+    });
+  };
 
   prevStep = () => {
     const { step } = this.state;
     this.setState({
-      step: step - 1
-    })
-  }
-
-  handleChange = input => e => {
-    this.setState({
-      [input]: e.target.value
-    })
-
-    if (input === 'firstname') {
-      if (this.state.firstname.length >= 1) {
-        this.setState({
-          isErrorFirstName: false
-        })
-      }
-    }
-
-    else if (input === 'lastname') {
-      if (this.state.lastname.length >= 1) {
-        this.setState({
-          isErrorLastName: false
-        })
-      }
-    }
-
-    if (input === 'phone') {
-      if (this.state.phone.length >= 10) {
-        this.setState({
-          isErrorPhone: false
-        })
-      }
-    }
-  }
-
-  addLevel = e => {
-    const levelChosen = e.target.value;
-    this.setState({
-      level: levelChosen
+      step: step - 1,
     });
   };
 
-  addCourse = data => {
-    const id = data.map(v => v.id);
+  handleChange = (input) => (e) => {
     this.setState({
-      courses: id
-    })
+      [input]: e.target.value,
+    });
+
+    if (input === "firstname") {
+      if (this.state.firstname.length >= 2) {
+        this.setState({
+          isErrorFirstName: false,
+        });
+      }
+    } else if (input === "lastname") {
+      if (this.state.lastname.length >= 2) {
+        this.setState({
+          isErrorLastName: false,
+        });
+      }
+    }
+
+    if (input === "email") {
+      if (this.state.email.length >= 5) {
+        this.setState({
+          isErrorEmail: false,
+        });
+      }
+    } 
+    if (input === "phone") {
+      if (this.state.phone.length >= 9) {
+        this.setState({
+          isErrorPhone: false,
+        });
+      }
+    }
+  };
+
+  addLevel = (e) => {
+    const levelChosen = e.target.value;
+    this.setState({
+      level: levelChosen,
+    });
+  };
+
+  addCourse = (data) => {
+    const id = data.map((v) => v.id);
+    this.setState({
+      courses: id,
+    });
   };
 
   validateFirstName = () => {
-    if (this.state.firstname.length < 5) {
+    if (this.state.firstname.length < 2) {
       this.setState({
         isErrorFirstName: true,
-        errorMessageFirstName: 'Type your first name (at least 5 characters)'
+        errorMessageFirstName: "Type your first name (at least 5 characters)",
       });
       return false;
     }
     return true;
-  }
+  };
 
   validateLastName = () => {
-    if (this.state.lastname.length < 5) {
+    if (this.state.lastname.length < 2) {
       this.setState({
         isErrorLastName: true,
-        errorMessageLastName: 'Type your last name (at least 5 characters)'
+        errorMessageLastName: "Type your last name (at least 5 characters)",
       });
       return false;
     }
     return true;
-  } 
+  };
 
+  validateEmail = () => {
+    
+
+    if (this.state.email.length < 5) {
+      this.setState({
+        isErrorEmail: true,
+        errorMessageEmail: "Type your Email",
+      });
+      return false;
+    }
+    return true;
+  };
 
   validatePhone = () => {
     if (this.state.phone.length < 10) {
       this.setState({
         isErrorPhone: true,
-        errorMessagePhone: 'Type your Phone Number (at least 10 Digit)'
+        errorMessagePhone: "Type your Phone Number (at least 10 Digit)",
       });
       return false;
     }
     return true;
-  } 
+  };
 
-  submitData = e => {
+  submitData = (e) => {
     e.preventDefault();
-    alert('Data sent');
-  }
+    alert("Data sent");
+  };
 
   render() {
     const {
@@ -185,38 +204,39 @@ class Form extends Component {
       level,
       isErrorFirstName,
       isErrorLastName,
+      isErrorEmail,
       isErrorPhone,
       errorMessageFirstName,
       errorMessageLastName,
-      errorMessagePhone
-
+      errorMessageEmail,
+      errorMessagePhone,
     } = this.state;
 
-    const coursesOptions = coursesData.map(el => ({
+    const coursesOptions = coursesData.map((el) => ({
       course: el.courseName,
       id: el.id,
-      category: el.category
+      category: el.category,
     }));
 
-    const coursesChosen = coursesData.filter(el => courses.includes(el.id));
-    const coursesChosenSummary = coursesChosen.map(el => (
+    const coursesChosen = coursesData.filter((el) => courses.includes(el.id));
+    const coursesChosenSummary = coursesChosen.map((el) => (
       <p key={el.id}>
-        {el.courseName} - {el.category} 
+        {el.courseName} - {el.category}
       </p>
     ));
 
     const chosenLevel = level;
-    
+
     const levelOptions = levelsData.map((el, index) => (
       <option key={index} value={el}>
         {el}
       </option>
     ));
-    
-    switch(step) {
-      case 1: 
+
+    switch (step) {
+      case 1:
         return (
-          <PersonalDetails 
+          <PersonalDetails
             nextStep={this.nextStep}
             handleChange={this.handleChange}
             firstname={firstname}
@@ -225,18 +245,21 @@ class Form extends Component {
             phone={phone}
             validateFirstName={this.validateFirstName}
             validateLastName={this.validateLastName}
+            validateEmail={this.validateEmail}
             validatePhone={this.validatePhone}
             isErrorFirstName={isErrorFirstName}
             isErrorLastName={isErrorLastName}
+            isErrorEmail={isErrorEmail}
             isErrorPhone={isErrorPhone}
             errorMessageFirstName={errorMessageFirstName}
             errorMessageLastName={errorMessageLastName}
+            errorMessageEmail={errorMessageEmail}
             errorMessagePhone={errorMessagePhone}
           />
-        )
+        );
       case 2:
         return (
-          <CourseDetails 
+          <CourseDetails
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             addCourse={this.addCourse}
@@ -245,10 +268,10 @@ class Form extends Component {
             levelOptions={levelOptions}
             level={level}
           />
-        )
+        );
       case 3:
         return (
-          <Summary 
+          <Summary
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             firstname={firstname}
@@ -259,8 +282,9 @@ class Form extends Component {
             chosenLevel={chosenLevel}
             submitData={this.submitData}
           />
-        )
-      default: return null
+        );
+      default:
+        return null;
     }
   }
 }

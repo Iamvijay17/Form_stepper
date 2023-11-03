@@ -109,12 +109,12 @@ class CourseDetails extends Component {
             steps={[{ label: 'Personal details' }, { label: 'Course details' }, { label: 'Summary' }]}
             activeStep={1}
             styleConfig={{
-              activeBgColor: '#2b7cff',
+              activeBgColor: '#FE6F5E',
               activeTextColor: '#fff',
               inactiveBgColor: '#fff',
-              inactiveTextColor: '#2b7cff',
+              inactiveTextColor: '#FE6F5E',
               completedBgColor: '#fff',
-              completedTextColor: '#2b7cff',
+              completedTextColor: '#FE6F5E',
               size: '3em'
             }}
             className={'stepper'}
