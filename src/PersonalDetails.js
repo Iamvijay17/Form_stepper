@@ -122,7 +122,7 @@ class PersonalDetails extends Component {
                 onChange={handleChange("phone")}
                 onBlur={validatePhone}
                 className="form-group__input"
-                maxlength="10"
+                maxLength="10"
                 required
               />
               <p className="error">{isErrorPhone && errorMessagePhone}</p>

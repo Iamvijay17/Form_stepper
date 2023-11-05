@@ -9,9 +9,9 @@ class App extends Component {
     return (
       <main className='main-container'>
         <h1 className='main-container__header'>
-          Sign up for a course now
+         Apply Course now!
         </h1>
-        <p className='main-container__subheader'>Fill in the form and get access for our online course for free!</p>
+        <p className='main-container__subheader'>Fill in the form and get course!</p>
           <Form />
       </main>
     );

@@ -4,7 +4,7 @@ import PersonalDetails from "./PersonalDetails";
 import CourseDetails from "./CourseDetails";
 import Summary from "./Summary";
 
-//Sample data
+//CourseDetailsCourseDetails data
 const coursesData = [
   {
     id: 1,
@@ -128,6 +128,8 @@ class Form extends Component {
     }
   };
 
+  
+
   addLevel = (e) => {
     const levelChosen = e.target.value;
     this.setState({
@@ -142,6 +144,9 @@ class Form extends Component {
     });
   };
 
+
+
+  
   validateFirstName = () => {
     if (this.state.firstname.length < 2) {
       this.setState({
@@ -165,8 +170,6 @@ class Form extends Component {
   };
 
   validateEmail = () => {
-    
-
     if (this.state.email.length < 5) {
       this.setState({
         isErrorEmail: true,
@@ -187,12 +190,15 @@ class Form extends Component {
     }
     return true;
   };
-
+ 
   submitData = (e) => {
+   
     e.preventDefault();
+    console.log(this.state);
     alert("Data sent");
   };
 
+ 
   render() {
     const {
       step,
@@ -212,6 +218,8 @@ class Form extends Component {
       errorMessagePhone,
     } = this.state;
 
+   
+   
     const coursesOptions = coursesData.map((el) => ({
       course: el.courseName,
       id: el.id,
@@ -233,6 +241,8 @@ class Form extends Component {
       </option>
     ));
 
+     
+      
     switch (step) {
       case 1:
         return (
@@ -255,9 +265,9 @@ class Form extends Component {
             errorMessageLastName={errorMessageLastName}
             errorMessageEmail={errorMessageEmail}
             errorMessagePhone={errorMessagePhone}
-          />
-        );
-      case 2:
+            />
+            );
+          case 2:
         return (
           <CourseDetails
             nextStep={this.nextStep}
@@ -281,12 +291,14 @@ class Form extends Component {
             coursesChosenSummary={coursesChosenSummary}
             chosenLevel={chosenLevel}
             submitData={this.submitData}
-          />
-        );
-      default:
-        return null;
-    }
-  }
-}
+            />
+            );
+            default:
+              return null;
+            }
+            
+          }
+        }
+        
 
 export default Form;

@@ -3,6 +3,8 @@ import { Stepper } from 'react-form-stepper';
 import './App.css';
 
 class Summary extends Component {
+
+  
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
@@ -12,6 +14,8 @@ class Summary extends Component {
     e.preventDefault();
     this.props.prevStep();
   }
+
+  
 
   render() {
     const { 
@@ -23,7 +27,13 @@ class Summary extends Component {
       chosenLevel,
       submitData,
     } = this.props;
-
+//  console.log(firstname, 
+//   lastname,  
+//   email, 
+//   phone,  
+//   coursesChosenSummary,
+//   chosenLevel,
+//   submitData,)
     return (
       <div className='form'>
         <div>
@@ -79,5 +89,6 @@ class Summary extends Component {
     )
   }
 }
+
 
 export default Summary;
